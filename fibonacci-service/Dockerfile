@@ -1,6 +1,6 @@
 FROM node:20-alpine
 WORKDIR /app
 COPY package.json ./package.json
-RUN npm install
-COPY . .
+RUN npm install --only=production && npm cache clean --force
+COPY index.js .
 ENTRYPOINT [ "npm", "start" ]
