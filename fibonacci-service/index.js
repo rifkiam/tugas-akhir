@@ -2,6 +2,7 @@ import express from 'express'
 import { performance } from 'perf_hooks'
 
 const app = express();
+app.use(express.text());
 
 function fibonacci(n) {
     if (n <= 0)
@@ -30,6 +31,23 @@ app.get('/:n', (req, res) => {
         executionTime: `${(end - start).toFixed(6)} ms`  
     });
 })
+
+app.post('', (req, res) => {
+    let n = parseInt(req.body); 
+
+    if (isNaN(n)) {
+        n = 30;
+    }
+
+    const start = performance.now();
+    const result = fibonacci(n);
+    const end = performance.now();
+    
+    res.json({ 
+        result,
+        executionTime: `${(end - start).toFixed(6)} ms`  
+    });
+});
 
 const port = process.env.PORT || 3000;
 
