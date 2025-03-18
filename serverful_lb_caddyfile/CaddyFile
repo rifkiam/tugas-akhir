@@ -1,0 +1,37 @@
+#:80 {
+#       reverse_proxy round_robin { 
+#               to 10.10.10.11:3000
+#               to 10.10.10.12:3000
+#               to 10.10.10.13:3000
+#               to 10.10.10.14:3000
+#               to 10.10.10.15:3000
+#       }
+#
+#       log {
+#               output file /var/log/caddy/access.log
+#               format json
+#       }
+#
+#       handle_errors {
+#               log {
+#                       output file /var/log/caddy/error.log
+#                       format json
+#               }
+#       }
+#}
+
+{
+    log {
+        output file /var/log/caddy/error.log
+        format json
+    }
+}
+
+:80 {
+    reverse_proxy 10.10.10.11:3000 10.10.10.12:3000 10.10.10.13:3000 10.10.10.14:3000 10.10.10.15:3000
+
+    log {
+        output file /var/log/caddy/access.log
+        format json
+    }
+}
