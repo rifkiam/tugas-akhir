@@ -40,8 +40,8 @@ app.post('/', (req, res) => {
     });
 });
 
-// For /function/fibonacci
-app.get('/function/fibonacci', (_req, res) => {
+// For /function/func_ibonacci
+app.get('/function/func_fibonacci', (_req, res) => {
     const start = performance.now();
     const result = fibonacci(30);
     const end = performance.now();
@@ -51,7 +51,7 @@ app.get('/function/fibonacci', (_req, res) => {
     });
 })
 
-app.post('/function/fibonacci', (req, res) => {
+app.post('/function/func_fibonacci', (req, res) => {
     let n = parseInt(req.body); 
 
     if (isNaN(n)) {
