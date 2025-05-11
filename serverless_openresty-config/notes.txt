@@ -1,0 +1,7 @@
+Masukkan http*.lua yang ada di folder github berikut:
+
+https://github.com/ledgetech/lua-resty-http/tree/master/lib/resty
+
+ke folder /usr/local/openresty/lualib/resty/
+
+sebelum menjalankan openresty -p
