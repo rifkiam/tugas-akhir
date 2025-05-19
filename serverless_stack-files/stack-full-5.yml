@@ -1,0 +1,26 @@
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  fibonacci:
+    image: rifkiam/fibonacci:latest-serverless
+    lang: dockerfile
+    limits:
+      cpu: "1000m"
+      memory: "1G"
+    networks:
+      - func_functions
+    environment:
+      PORT: "8080"
+      write_debug: true
+      read_timeout: "5m5s"
+      write_timeout: "5m5s"
+    labels:
+      com.openfaas.scale.min: "5"
+      com.openfaas.scale.max: "5"
+      com.openfaas.scale.factor: "30"
+
+networks:
+  func_functions:
+    external: true
